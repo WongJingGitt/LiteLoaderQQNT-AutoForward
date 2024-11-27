@@ -1,0 +1,15 @@
+{
+    "whitelist": [],
+    "blacklist": [],
+    "globalForward": false,
+    "globalPrefix": "",
+    "globalSuffix": "",
+    "globalRule": "",
+    "globalRecipientQQ": "",
+    "globalRecipientGroup": "",
+    "globalRecipientMember": {
+        "group": "",
+        "member": ""
+    },
+    "matchMode": "keyword"
+}

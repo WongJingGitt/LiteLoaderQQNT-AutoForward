@@ -1,0 +1,145 @@
+<style>
+    .setting-label {
+        width: 20%;
+    }
+    .setting-item {
+        width: 80%;
+    }
+
+    .setting-input {
+        background-color: #F2F2F2;
+        padding: 10px;
+        width: 80%;
+        border-radius: 5px;
+    }
+
+    .setting-input:focus {
+        transform: scale(1.02);
+ 		transition: transform 0.3s ease;
+         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .add-setting-item-button {
+        padding: 5px;
+    }
+
+    .setting-select {
+        width: 50%;
+    }
+
+    .global-pre {
+        display: inline-flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .global-recipient {
+        display: inline-flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .setting-text {
+        white-space: normal;
+        overflow: visible;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        width: auto;
+    }
+
+    #global-forward-select {
+        width: 50%;
+    }
+</style>
+
+<setting-section data-title="转发规则">
+    <setting-panel>
+        <setting-list data-direction="column">
+            <setting-item data-direction="column">
+                <div class="setting-text">
+                    <p style="padding-bottom: 5px">多个规则/多个接收人QQ或者群号，使用英文逗号分隔。</p>
+                    <p style="padding-bottom: 5px">指定群成员指将消息转发到某个群中指定的某个群员。</p>
+                </div>
+            </setting-item>
+        </setting-list>
+    </setting-panel>
+    <setting-panel>
+        <setting-list data-direction="column">
+            <setting-item data-direction="column">
+                <div class="setting-label">转发开关</div>
+                <div class="setting-item">
+                    <setting-select data-title="全局转发" id="global-forward-select" >
+                        <setting-option data-value="forward-on" >开启自动转发</setting-option>
+                        <setting-option data-value="forward-off" is-selected>关闭自动转发</setting-option>
+                    </setting-select>
+                </div>
+            </setting-item>
+        </setting-list>
+        <setting-list data-direction="column">
+            <setting-item data-direction="column">
+                <div class="setting-label">转发模式</div>
+                <div class="setting-item">
+                    <setting-select data-title="匹配模式" class="setting-select" id="match-mode" >
+                        <setting-option data-value="char" >消息完全匹配</setting-option>
+                        <setting-option data-value="keyword" is-selected>包含关键字</setting-option>
+                        <setting-option data-value="uin" >转发指定QQ/群号</setting-option>
+                    </setting-select>
+                </div>
+            </setting-item>
+        </setting-list>
+    </setting-panel>
+    <setting-panel>
+        <setting-list data-direction="column">
+            <setting-item data-direction="column">
+                <div class="setting-label">匹配规则</div>
+                <div class="setting-item global-pre">
+                    <input class="setting-input" placeholder="输入规则" id="rule" />
+                    <setting-button data-type="secondary" class="add-setting-item-button" id="set-rule">应用</setting-button>
+                </div>
+            </setting-item>
+            <setting-item data-direction="column">
+                <div class="setting-label">接收的QQ</div>
+                <div class="setting-item global-recipient">
+                    <input class="setting-input" placeholder="输入QQ" id="global-recipient-qq" />
+                    <setting-button data-type="secondary" class="add-setting-item-button" id="set-global-recipient-qq">应用</setting-button>
+                </div>
+            </setting-item>
+            <setting-item data-direction="column">
+                <div class="setting-label">接收的群聊</div>
+                <div class="setting-item global-recipient">
+                    <input class="setting-input" placeholder="输入群号" id="global-recipient-group" />
+                    <setting-button data-type="secondary" class="add-setting-item-button" id="set-global-recipient-group">应用</setting-button>
+                </div>
+            </setting-item>
+            <setting-item data-direction="column">
+                <div class="setting-label">指定群成员</div>
+                <div class="setting-item global-recipient">
+                    <input style="width: 35%" class="setting-input" placeholder="输入群号" id="global-recipient-group-uid" />
+                    <input style="width: 40%" class="setting-input" placeholder="输入群成员QQ" id="global-recipient-group-member" />
+                    <setting-button data-type="secondary" class="add-setting-item-button" id="set-global-recipient-group-member">应用</setting-button>
+                </div>
+            </setting-item>
+        </setting-list>
+    </setting-panel>
+</setting-section>
+
+<setting-section data-title="消息预处理">
+    <setting-panel>
+        <setting-list data-direction="column">
+            <setting-item data-direction="column">
+                <div class="setting-label">添加前缀</div>
+                <div class="setting-item global-pre">
+                    <input class="setting-input" placeholder="输入前缀" id="global-prefix" />
+                    <setting-button data-type="secondary" class="add-setting-item-button" id="set-global-prefix">应用</setting-button>
+                </div>
+            </setting-item>
+            <setting-item data-direction="column">
+                <div class="setting-label">添加后缀</div>
+                <div class="setting-item global-pre">
+                    <input class="setting-input" placeholder="输入后缀" id="global-suffix" />
+                    <setting-button data-type="secondary" class="add-setting-item-button" id="set-global-suffix">应用</setting-button>
+                </div>
+            </setting-item>
+        </setting-list>
+    </setting-panel>
+</setting-section>

@@ -1,0 +1,33 @@
+{
+    "manifest_version": 4,
+    "type": "extension",
+    "name": "消息转发助手",
+    "slug": "AutoForward",
+    "description": "根据指定的规则自动转发消息至指定好友/群",
+    "version": "0.1.0",
+    "icon": null,
+    "thumb": null,
+    "authors": [
+        {
+            "name": "WongJingGit",
+            "link": "https://github.com/WongJingGitt"
+        }
+    ],
+    "platform": [
+        "win32",
+        "linux",
+        "darwin"
+    ],
+    "dependencies": [
+        "euphony"
+    ],
+    "injects": {
+        "renderer": "./src/renderer/renderer.js",
+        "main": "./src/main.js",
+        "preload": "./src/preload/preload.js"
+    },
+    "repository": {
+        "repo": "WongJingGitt/LiteLoaderQQNT-AutoForward",
+        "branch": "master"
+    }
+}
