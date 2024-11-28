@@ -4,7 +4,7 @@
     "name": "消息转发助手",
     "slug": "AutoForward",
     "description": "根据指定的规则自动转发消息至指定好友/群",
-    "version": "0.1.1",
+    "version": "0.2.0",
     "icon": null,
     "thumb": null,
     "authors": [
