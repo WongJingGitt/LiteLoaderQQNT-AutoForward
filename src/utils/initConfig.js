@@ -1,4 +1,4 @@
-import getConfig from "./getConfig";
+import getConfig from "./getConfig.js";
 
 export default async function initConfig(view) {
     const config = await getConfig();

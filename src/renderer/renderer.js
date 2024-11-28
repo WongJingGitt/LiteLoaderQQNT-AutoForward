@@ -1,5 +1,5 @@
 import getConfig from "../utils/getConfig.js";
-import messageListener from "../utils/messageListener";
+import messageListener from "../utils/messageListener.js";
 import initConfig from "../utils/initConfig.js";
 
 const pluginPath = LiteLoader.plugins.AutoForward.path.plugin;
