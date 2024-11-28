@@ -12,6 +12,10 @@ class Forward {
     #parseMessage () {
         let prefix = this.config?.globalPrefix || '';
         let suffix = this.config?.globalSuffix || '';
+
+        prefix = prefix.replace(/\{\{发送人}}/g, this.sender)
+        suffix = suffix.replace(/\{\{发送人}}/g, this.sender)
+
         this.message = new window.euphony.PlainText(`${prefix}${this.originMessage}${suffix}`);
     }
 
