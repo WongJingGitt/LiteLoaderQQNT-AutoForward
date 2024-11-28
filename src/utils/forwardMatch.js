@@ -16,6 +16,9 @@ class Forward {
         prefix = prefix.replace(/\{\{发送人}}/g, this.sender)
         suffix = suffix.replace(/\{\{发送人}}/g, this.sender)
 
+        prefix = prefix.replace(/\{\{时间}}/g, new Date().toLocaleString())
+        suffix = suffix.replace(/\{\{时间}}/g, new Date().toLocaleString())
+
         this.message = new window.euphony.PlainText(`${prefix}${this.originMessage}${suffix}`);
     }
 
