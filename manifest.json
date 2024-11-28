@@ -4,7 +4,7 @@
     "name": "消息转发助手",
     "slug": "AutoForward",
     "description": "根据用户设定的规则自动转发QQ消息至指定的好友、群聊或群内成员，支持多种匹配模式和消息预处理选项。",
-    "version": "0.2.0",
+    "version": "0.2.1",
     "icon": "./assets/icon.svg",
     "thumb": "./assets/icon.svg",
     "authors": [
