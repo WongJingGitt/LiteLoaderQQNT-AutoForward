@@ -11,5 +11,6 @@
         "group": "",
         "member": ""
     },
-    "matchMode": "keyword"
+    "matchMode": "keyword",
+    "apikey": ""
 }

@@ -83,6 +83,7 @@
                         <setting-option data-value="char" >消息完全匹配</setting-option>
                         <setting-option data-value="keyword" is-selected>包含关键字</setting-option>
                         <setting-option data-value="uin" >转发指定QQ/群号</setting-option>
+                        <setting-option data-value="ai" >使用AI判定</setting-option>
                     </setting-select>
                 </div>
             </setting-item>
@@ -138,6 +139,21 @@
                 <div class="setting-item global-pre">
                     <input class="setting-input" placeholder="输入后缀" id="global-suffix" />
                     <setting-button data-type="secondary" class="add-setting-item-button" id="set-global-suffix">应用</setting-button>
+                </div>
+            </setting-item>
+        </setting-list>
+    </setting-panel>
+</setting-section>
+
+<setting-section data-title="配置">
+    <setting-panel>
+        <setting-list data-direction="column">
+            <setting-item data-direction="column">
+                <div class="setting-label" >智谱APIKEY</div>
+                <div class="setting-item global-pre">
+                    <input class="setting-input" placeholder="输入智谱APIKEY" id="chatglm-apikey"  style="width: 65%" />
+                    <div id="chatglm-apikey-info"></div>
+                    <setting-button data-type="secondary" class="add-setting-item-button" id="set-chatglm-apikey">应用</setting-button>
                 </div>
             </setting-item>
         </setting-list>

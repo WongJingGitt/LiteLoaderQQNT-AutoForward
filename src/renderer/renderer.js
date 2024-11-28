@@ -68,4 +68,19 @@ export const onSettingWindowCreated = async (view) => {
         window.AutoForward.setConfig({...config, globalRecipientMember: {group, member}});
     })
 
+    view.querySelector('#set-chatglm-apikey').addEventListener('click', async (e) => {
+        const config = await getConfig();
+        const chatglm = view.querySelector('#chatglm-apikey').value;
+
+        if (chatglm === '') {
+            view.querySelector('#chatglm-apikey-info').style.color = 'red';
+            view.querySelector('#chatglm-apikey-info').innerText = '未设置';
+        }else {
+            view.querySelector('#chatglm-apikey-info').style.color = 'green';
+            view.querySelector('#chatglm-apikey-info').innerText = '已设置';
+        }
+
+        window.AutoForward.setConfig({...config, apikey: chatglm});
+    })
+
 }

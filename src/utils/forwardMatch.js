@@ -1,3 +1,5 @@
+import ChatGLM from "./chatGLM.js";
+
 class Forward {
     constructor(config, message, sender) {
         this.config = config;
@@ -8,10 +10,9 @@ class Forward {
     }
 
     #parseMessage () {
-        const prefix = this.config?.globalPrefix || '';
-        const suffix = this.config?.globalSuffix || '';
+        let prefix = this.config?.globalPrefix || '';
+        let suffix = this.config?.globalSuffix || '';
         this.message = new window.euphony.PlainText(`${prefix}${this.originMessage}${suffix}`);
-        window.AutoForward.log(this.message);
     }
 
     recipient () {
@@ -70,13 +71,43 @@ class QQMatch extends Forward {
     }
 }
 
+class AIMatch extends Forward {
+    constructor(config, message, sender) {
+        super(config, message, sender);
+    }
 
+    async forward () {
+        const rule = this.config.globalRule
+
+        const prompt = `你是一个专业的内容转发判定大师，通过接收到的文案判定该内容是否应该被转发，你的能力如下：
+        - 你会收到一个JSON，uin代表消息来源的QQ号或者群聊号，message代表消息内容。
+        - 总结并且理解消息内容;
+        - ${rule};
+        - 当内容应该被转发时回复1，不应该被转发时回复0;
+        - 难以分类的问题统一回复0
+        - 你的回复仅限于0或1，不要回复其他任何内容。`
+
+        const response = await ChatGLM.send(
+            [
+                { role: 'system', content: prompt },
+                { role: 'user', content: JSON.stringify({ uin: this.sender, message: this.originMessage }) }
+            ],
+            this.config.apikey
+        );
+
+        const result = response?.choices?.at(0)?.message?.content;
+        window.AutoForward.log(result);
+        if ( result !== '1' ) return;
+        this.recipient().forEach(item => item?.sendMessage(this.message));
+    }
+}
 
 export default class ForwardMatch {
     static matchList = {
         keyword: KeywordMatch,
         char: CharMatch,
-        uin: QQMatch
+        uin: QQMatch,
+        ai: AIMatch
     };
 
 
