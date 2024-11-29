@@ -10,16 +10,21 @@ class Forward {
     }
 
     #parseMessage () {
-        let prefix = this.config?.globalPrefix || '';
-        let suffix = this.config?.globalSuffix || '';
 
-        prefix = prefix.replace(/\{\{发送人}}/g, this.sender)
-        suffix = suffix.replace(/\{\{发送人}}/g, this.sender)
+        const parseList = [
+            { regExp: /\{\{发送人}}/g, result: this.sender },
+            { regExp: /\{\{时间}}/g, result: new Date().toLocaleString() },
+            { regExp: /\{\{消息}}/g, result: this.originMessage }
+        ]
 
-        prefix = prefix.replace(/\{\{时间}}/g, new Date().toLocaleString())
-        suffix = suffix.replace(/\{\{时间}}/g, new Date().toLocaleString())
 
-        this.message = new window.euphony.PlainText(`${prefix}${this.originMessage}${suffix}`);
+        let textPreprocessing = this.config?.globalTextPreprocessing || '';
+        if (textPreprocessing === '') {
+            this.message = new window.euphony.PlainText(this.originMessage);
+            return;
+        }
+        parseList.forEach(item => textPreprocessing = textPreprocessing.replace(item.regExp, item.result));
+        this.message = new window.euphony.PlainText(textPreprocessing);
     }
 
     recipient () {

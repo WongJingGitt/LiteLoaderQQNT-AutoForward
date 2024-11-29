@@ -47,19 +47,13 @@ export const onSettingWindowCreated = async (view) => {
         window.AutoForward.setConfig({...config, globalForward});
     });
 
-    // 更新全局前缀到本地文件
-    view.querySelector('#set-global-prefix').addEventListener('click', async (e) => {
+    // 更新全局预处理到本地文件
+    view.querySelector('#set-global-text-preprocessing').addEventListener('click', async (e) => {
         const config = await getConfig();
-        const prefix = view.querySelector('#global-prefix').value;
-        window.AutoForward.setConfig({...config, globalPrefix: prefix});
+        const textPreprocessing = view.querySelector('#global-text-preprocessing').value;
+        window.AutoForward.setConfig({...config, globalTextPreprocessing: textPreprocessing});
     });
 
-    // 更新全局后缀到本地文件
-    view.querySelector('#set-global-suffix').addEventListener('click', async (e) => {
-        const config = await getConfig();
-        const suffix = view.querySelector('#global-suffix').value;
-        window.AutoForward.setConfig({...config, globalSuffix: suffix});
-    })
 
     view.querySelector('#set-global-recipient-group-member').addEventListener('click', async (e) => {
         const config = await getConfig();

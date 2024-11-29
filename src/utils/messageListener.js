@@ -6,7 +6,9 @@ export default async function messageListener() {
     eventChannel.subscribeEvent('receive-message', async (message, source) => {
 
         const msgString = message.contentToString();        // 收到的消息
-        const sender = source.getContact().getId();     // 消息发送者的QQ号/群号
+
+        const contact = source.getContact();
+        const sender = contact.getId();     // 消息发送者的QQ号/群号
 
         const config = await getConfig();
 
