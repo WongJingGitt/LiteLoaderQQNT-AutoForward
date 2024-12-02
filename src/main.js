@@ -14,10 +14,6 @@ exports.onLogin = (uid) => {
         userConfig[uid] = require(configTemplatePath);
         LiteLoader.api.config.set('AutoForward', userConfig);
     }
-    // userConfigPath = path.join(pluginPath, `src/config/config_${uid}.json`);
-    // if (!fs.existsSync(userConfigPath)) {
-    //     fs.copyFileSync(configTemplatePath, userConfigPath);
-    // }
 }
 
 ipcMain.on('AutoForward.log', (event, ...msg) => {
@@ -25,7 +21,6 @@ ipcMain.on('AutoForward.log', (event, ...msg) => {
 })
 
 ipcMain.on('AutoForward.setConfig', (event, config) => {
-    // fs.writeFileSync(userConfigPath, JSON.stringify(config, null, '\t'))
     const userConfig = LiteLoader.api.config.get('AutoForward', {});
     userConfig[userUid] = config;
     LiteLoader.api.config.set('AutoForward', userConfig);
