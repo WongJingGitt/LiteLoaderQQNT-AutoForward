@@ -129,7 +129,18 @@
     <setting-panel>
         <setting-list data-direction="column">
             <setting-item data-direction="column">
-                <div class="setting-label" style="display: flex; justify-content: flex-start; height: 100px">预处理</div>
+                <div style="display: flex; justify-content: flex-start; align-items: flex-start; flex-direction: column; width: 100%">
+                    <p style="padding-bottom: 10px; margin-bottom: 10px; border-bottom: 2px solid #F2F2F2; width: 100%;">
+                        假设收到来自QQ号 <strong>123456</strong> 的消息：<strong>你好，我是消息转发助手。</strong><br/><br/>
+                        按照当前预处理方案格式，会这样转发：
+                    </p>
+                    <div id="text-preprocessing-preview" style="display: flex; justify-content: flex-start; overflow-y: auto; width: 100%;white-space: pre-wrap; align-items: flex-start;">
+
+                    </div>
+                </div>
+            </setting-item>
+            <setting-item data-direction="column">
+                <div class="setting-label" style="display: flex; justify-content: flex-start; height: 100px;">预处理</div>
                 <div class="setting-item global-pre">
                     <textarea class="setting-input" style="height: 100px; resize: none;" placeholder="输入预处理规则" id="global-text-preprocessing"></textarea>
                     <div style="display: flex; justify-content: flex-start; height: 100px">

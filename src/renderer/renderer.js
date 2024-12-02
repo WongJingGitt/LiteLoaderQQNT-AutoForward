@@ -1,6 +1,7 @@
 import getConfig from "../utils/getConfig.js";
 import messageListener from "../utils/messageListener.js";
 import initConfig from "../utils/initConfig.js";
+import textPreprocessingPreview from "../utils/textPreprocessingPreview.js";
 
 const pluginPath = LiteLoader.plugins.AutoForward.path.plugin;
 
@@ -10,6 +11,7 @@ export const onSettingWindowCreated = async (view) => {
     view.innerHTML = await (await fetch(`local:///${pluginPath}/src/pages/index.html`)).text();
 
     await initConfig(view);
+    textPreprocessingPreview(view);
 
     // 更新匹配模式到本地文件
     view.querySelector('#match-mode').addEventListener('selected', async (e) => {
