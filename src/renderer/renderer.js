@@ -9,7 +9,6 @@ messageListener();
 
 export const onSettingWindowCreated = async (view) => {
     view.innerHTML = await (await fetch(`local:///${pluginPath}/src/pages/index.html`)).text();
-
     await initConfig(view);
     textPreprocessingPreview(view);
 

@@ -3,6 +3,7 @@ import { textPreprocessingParse } from './textPreprocessingPreview.js';
 
 export default async function initConfig(view) {
     const config = await getConfig();
+
     view.querySelector(`[data-value=${config.matchMode}]`).click();
     view.querySelector('#rule').value = config.globalRule;
     view.querySelector('#global-recipient-qq').value = config.globalRecipientQQ;

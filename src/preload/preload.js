@@ -6,6 +6,6 @@ const { contextBridge, ipcRenderer } = require("electron");
 contextBridge.exposeInMainWorld("AutoForward", {
     log: (...data) => ipcRenderer.send("AutoForward.log", ...data),
     setConfig: config => {
-        ipcRenderer.send("AutoForward.getConfig", config);
+        ipcRenderer.send("AutoForward.setConfig", config);
     }
 });

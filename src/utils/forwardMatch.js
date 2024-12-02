@@ -89,7 +89,8 @@ class AIMatch extends Forward {
     }
 
     async forward () {
-        const rule = this.config.globalRule
+        const rule = this.config.globalRule;
+
         if (this.config.apikey === '') return;
 
         const prompt = `你是一个专业的内容转发判定大师，通过接收到的文案判定该内容是否应该被转发，你的能力如下：
@@ -109,7 +110,6 @@ class AIMatch extends Forward {
         );
 
         const result = response?.choices?.at(0)?.message?.content;
-
         if ( result !== '1' ) return;
         this.recipient().forEach(item => item?.sendMessage(this.message));
     }
