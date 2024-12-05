@@ -75,8 +75,6 @@
                     </setting-select>
                 </div>
             </setting-item>
-        </setting-list>
-        <setting-list data-direction="column">
             <setting-item data-direction="column">
                 <div class="setting-label">转发模式</div>
                 <div class="setting-item">
@@ -116,8 +114,10 @@
             <setting-item data-direction="column">
                 <div class="setting-label">指定群成员</div>
                 <div class="setting-item global-recipient">
-                    <input style="width: 35%" class="setting-input" placeholder="输入群号" id="global-recipient-group-uid" />
-                    <input style="width: 40%" class="setting-input" placeholder="输入群成员QQ" id="global-recipient-group-member" />
+                    <div style="width: 80%; display: flex; justify-content: space-between; align-items: center;">
+                        <input style="width: 47%;" class="setting-input" placeholder="输入群号" id="global-recipient-group-uid" />
+                        <input style="width: 47%" class="setting-input" placeholder="输入群成员QQ" id="global-recipient-group-member" />
+                    </div>
                     <setting-button data-type="secondary" class="add-setting-item-button" id="set-global-recipient-group-member" style="padding-top: 0">应用</setting-button>
                 </div>
             </setting-item>
