@@ -78,4 +78,31 @@ export const onSettingWindowCreated = async (view) => {
         window.AutoForward.setConfig({...config, apikey: chatglm});
     })
 
+    view.querySelector('#webhook-enable-select').addEventListener('selected', async (e) => {
+        const config = await getConfig();
+        const webhookEnbale = e.detail.value === 'webhook-on';
+        window.AutoForward.setConfig({...config, webhookConfig: {...config.webhookConfig, enable: webhookEnbale}});
+    });
+
+    view.querySelector('#set-webhook-url').addEventListener('click', async (e) => {
+        const config = await getConfig();
+        const url = view.querySelector('#webhook-url').value;
+
+        window.AutoForward.setConfig({...config,webhookConfig: {...config.webhookConfig, url: url}});
+    })
+    view.querySelector('#set-webhook-token').addEventListener('click', async (e) => { 
+        const config = await getConfig();
+        const token = view.querySelector('#webhook-token').value;
+        window.AutoForward.setConfig({...config,webhookConfig: {...config.webhookConfig, Authorization: token}});
+    })
+    view.querySelector('#set-webhook-recipients').addEventListener('click', async (e) => { 
+        const config = await getConfig();
+        const recipients = view.querySelector('#webhook-recipients').value;
+        window.AutoForward.setConfig({...config,webhookConfig: {...config.webhookConfig, statusRecipients: recipients}});
+    })
+    view.querySelector('#set-webhook-body').addEventListener('click', async (e) => { 
+        const config = await getConfig();
+        const body = view.querySelector('#webhook-body').value;
+        window.AutoForward.setConfig({...config,webhookConfig: {...config.webhookConfig, body}});
+    })
 }

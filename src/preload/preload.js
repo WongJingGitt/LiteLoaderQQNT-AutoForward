@@ -7,5 +7,8 @@ contextBridge.exposeInMainWorld("AutoForward", {
     log: (...data) => ipcRenderer.send("AutoForward.log", ...data),
     setConfig: config => {
         ipcRenderer.send("AutoForward.setConfig", config);
-    }
+    },
+    fetch: async (...data) => {
+        return await ipcRenderer.invoke("AutoForward.fetch", ...data);
+    },
 });

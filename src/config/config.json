@@ -11,5 +11,12 @@
         "member": ""
     },
     "matchMode": "keyword",
-    "apikey": ""
+    "apikey": "",
+    "webhookConfig": {
+        "enable": false,
+        "Authorization": "",
+        "url": "",
+        "statusRecipients": "",
+        "body": ""
+    } 
 }

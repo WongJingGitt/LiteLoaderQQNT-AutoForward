@@ -9,6 +9,7 @@ export function textPreprocessingParse( textPreprocessing ) {
     return textPreprocessing;
 }
 
+// 模板实时预览处理
 export default function textPreprocessingPreview(view) {
     const handler = {
         set: ( target, propKey, value, receiver ) => {

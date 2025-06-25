@@ -131,6 +131,9 @@
             <setting-item data-direction="column">
                 <div style="display: flex; justify-content: flex-start; align-items: flex-start; flex-direction: column; width: 100%">
                     <p style="padding-bottom: 10px; margin-bottom: 10px; border-bottom: 2px solid #F2F2F2; width: 100%;">
+                        消息预处理仅对纯文字消息生效。 
+                    </p>
+                    <p style="padding-bottom: 10px; margin-bottom: 10px; border-bottom: 2px solid #F2F2F2; width: 100%;">
                         假设收到来自QQ号 <strong>123456</strong> 的消息：<strong>你好，我是消息转发助手。</strong><br/><br/>
                         按照当前预处理方案格式，会这样转发：
                     </p>
@@ -152,7 +155,7 @@
     </setting-panel>
 </setting-section>
 
-<setting-section data-title="配置">
+<setting-section data-title="AI与Wehook配置">
     <setting-panel>
         <setting-list data-direction="column">
             <setting-item data-direction="column">
@@ -161,6 +164,56 @@
                     <input class="setting-input" placeholder="输入智谱APIKEY" id="chatglm-apikey"  style="width: 65%" />
                     <div id="chatglm-apikey-info"></div>
                     <setting-button data-type="secondary" class="add-setting-item-button" id="set-chatglm-apikey">应用</setting-button>
+                </div>
+            </setting-item>
+        </setting-list>
+    </setting-panel>
+    <setting-panel>
+        <setting-list data-direction="column">
+            <setting-item data-direction="column">
+                <div class="setting-text">
+                    <p style="padding-bottom: 5px; font-weight: bold">Webhook仅支持POST请求。</p>
+                    <p style="padding-bottom: 5px;">请求body为json类型，与预处理规则相同。注意使用引号包裹，例如："{{消息}}"</p>
+                    <p style="padding-bottom: 5px;">仅在关键字匹配、完全匹配下生效。</p>
+                </div>
+            </setting-item>
+            <setting-item data-direction="column">
+                <div class="setting-label">Webhook配置开关</div>
+                <div class="setting-item">
+                    <setting-select data-title="Webhook开关" id="webhook-enable-select" style="width: 50%;" >
+                        <setting-option data-value="webhook-on" >开启Webhook</setting-option>
+                        <setting-option data-value="webhook-off" is-selected>关闭Webhook</setting-option>
+                    </setting-select>
+                </div>
+            </setting-item>
+            <setting-item data-direction="column">
+                <div class="setting-label">请求链接</div>
+                <div class="setting-item global-pre">
+                    <input class="setting-input" placeholder="输入链接" id="webhook-url" />
+                    <setting-button data-type="secondary" class="add-setting-item-button" id="set-webhook-url">应用</setting-button>
+                </div>
+            </setting-item>
+            <setting-item data-direction="column">
+                <div class="setting-label">token</div>
+                <div class="setting-item global-pre">
+                    <input class="setting-input" placeholder="输入Token, 若无保持空即可" id="webhook-token" />
+                    <setting-button data-type="secondary" class="add-setting-item-button" id="set-webhook-token">应用</setting-button>
+                </div>
+            </setting-item>
+            <setting-item data-direction="column">
+                <div class="setting-label" style="display: flex; justify-content: flex-start; height: 100px;">请求Body</div>
+                <div class="setting-item global-pre">
+                    <textarea class="setting-input" style="height: 100px; resize: none;" placeholder="输入请求体" id="webhook-body"></textarea>
+                    <div style="display: flex; justify-content: flex-start; height: 100px">
+                        <setting-button data-type="secondary" class="add-setting-item-button" id="set-webhook-body" >应用</setting-button>
+                    </div>
+                </div>
+            </setting-item>
+            <setting-item data-direction="column">
+                <div class="setting-label">状态通知接收</div>
+                <div class="setting-item global-pre">
+                    <input class="setting-input" placeholder="输入QQ，仅支持QQ" id="webhook-recipients" />
+                    <setting-button data-type="secondary" class="add-setting-item-button" id="set-webhook-recipients">应用</setting-button>
                 </div>
             </setting-item>
         </setting-list>

@@ -16,4 +16,10 @@ export default async function initConfig(view) {
 
     view.querySelector('#chatglm-apikey-info').innerHTML = config.apikey === '' ? '未设置' : '已设置';
     view.querySelector('#chatglm-apikey-info').style.color = config.apikey === '' ? 'red' : 'green';
+
+    view.querySelector(`[data-value="${config.webhookConfig.enable ? "webhook-on": "webhook-off"}"]`).click();
+    view.querySelector('#webhook-url').value = config.webhookConfig.url;
+    view.querySelector('#webhook-token').value = config.webhookConfig.Authorization;
+    view.querySelector('#webhook-recipients').value = config.webhookConfig.statusRecipients;
+    view.querySelector('#webhook-body').value = config.webhookConfig.body;
 }
