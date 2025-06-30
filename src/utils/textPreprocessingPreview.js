@@ -3,7 +3,9 @@ export function textPreprocessingParse( textPreprocessing ) {
     const parseList = [
         { regExp: /\{\{发送人}}/g, result: 123456 },
         { regExp: /\{\{时间}}/g, result: new Date().toLocaleString() },
-        { regExp: /\{\{消息}}/g, result: '你好，我是消息转发助手。' }
+        { regExp: /\{\{消息}}/g, result: '你好，我是消息转发助手。' },
+        { regExp: /\{\{聊天类型}}/g, result: "私聊" },
+        { regExp: /\{\{发送人昵称}}/g, result: "Pony Ma" }
     ];
     parseList.forEach(item => textPreprocessing = textPreprocessing.replace(item.regExp, item.result));
     return textPreprocessing;
